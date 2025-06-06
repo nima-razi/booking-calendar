@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
+        /* dateClick: function() {
+            alert('a day has been clicked!');
+        }, */
+        locale: 'fi',
         height: '100%',
         expandRows: true,
         themeSystem: 'bootstrap5',
@@ -12,9 +16,29 @@ document.addEventListener('DOMContentLoaded', function() {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
         footerToolbar: {
-            left: '',
-            center: 'prev,today,next',
-            right: ''
+            left: 'addEventButton',
+            center: '',
+            right: 'prev,today,next'
+        },
+        customButtons: {
+            addEventButton: {
+                text: 'add event...',
+                click: function() {
+                    var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+                    var date = new Date(dateStr + 'T00:00:00');
+                    
+                    if (!isNaN(date.valueOf())) {
+                        calendar.addEvent({
+                            title: 'dynamic event',
+                            start: date,
+                            allDay: true
+                        });
+                        alert('Great. Now, update your database...');
+                    } else {
+                        alert('Invalid date.');
+                    }
+                }
+            }
         },
         weekNumbers: true,
         dayMaxEvents: true, // allow "more" link when too many events
