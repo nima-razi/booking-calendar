@@ -1,10 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        /* dateClick: function() {
-            alert('a day has been clicked!');
-        }, */
-        locale: 'fi',
         height: '100%',
         expandRows: true,
         themeSystem: 'bootstrap5',
@@ -23,20 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
         customButtons: {
             addEventButton: {
                 text: 'add event...',
-                click: function() {
-                    var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-                    var date = new Date(dateStr + 'T00:00:00');
-                    
-                    if (!isNaN(date.valueOf())) {
-                        calendar.addEvent({
-                            title: 'dynamic event',
-                            start: date,
-                            allDay: true
-                        });
-                        alert('Great. Now, update your database...');
-                    } else {
-                        alert('Invalid date.');
-                    }
+                click: function () {
+                    const addEventModal = new bootstrap.Modal(document.getElementById('addEventModal'));
+                    addEventModal.show();
                 }
             }
         },
