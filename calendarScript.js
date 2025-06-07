@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         customButtons: {
             addEventButton: {
-                text: 'add event...',
+                text: '+ add event',
                 click: function () {
                     const addEventModal = new bootstrap.Modal(document.getElementById('addEventModal'));
                     addEventModal.show();
