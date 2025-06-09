@@ -1,4 +1,4 @@
-import { setupEventForm } from '/js/eventFormHandler.js';
+import { setupEventForm } from './eventFormHandler.js';
 
 let calendar; // define at top-level scope
 
