@@ -24,11 +24,17 @@ fetch('./data/events.json')
             
             const eventHTML = `
             <div class="mb-3">
-            <h5 class="card-title">${event.title}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">${start.toDateString()} - ${end.toDateString()} <i class="bi bi-calendar3"></i></h6>
-            <h6 class="card-subtitle mb-2 text-muted">${start.toLocaleTimeString()} - ${end.toLocaleTimeString()} <i class="bi bi-clock"></i></h6>
-            <p class="card-text">${event.description}</p>
-            <a href="${event.url}" class="btn btn-primary">Go to event</a>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title">${event.title}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${start.toDateString()} - ${end.toDateString()} <i class="bi bi-calendar3"></i></h6>
+                        <h6 class="card-subtitle mb-2 text-muted">${start.toLocaleTimeString()} - ${end.toLocaleTimeString()} <i class="bi bi-clock"></i></h6>
+                        <p class="card-text">${event.description}</p>
+                    </div>
+                    <div class="col-auto align-self-center">
+                        <a href="${event.url}" class="btn btn-primary">Go to event</a>
+                    </div>
+                </div>
             </div>
             `;
             container.insertAdjacentHTML('beforeend', eventHTML);
